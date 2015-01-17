@@ -15,6 +15,7 @@
 		4962999E1A6A2CA1008C431C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */; };
 		496299A11A6A2CA1008C431C /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 496299991A6A2CA1008C431C /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		496299A61A6A2D06008C431C /* Keyboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496299A51A6A2D06008C431C /* Keyboards.plist */; };
+		4975DEC51A6A389700592AB1 /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4975DEC41A6A389700592AB1 /* SelectTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,11 +59,11 @@
 		4962996E1A6A216B008C431C /* altTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = altTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		496299731A6A216B008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		496299741A6A216B008C431C /* altTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = altTests.swift; sourceTree = "<group>"; };
-		496299931A6A24DA008C431C /* KeyboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardTableViewController.swift; path = ../KeyboardTableViewController.swift; sourceTree = "<group>"; };
 		496299991A6A2CA1008C431C /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4962999C1A6A2CA1008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		496299A51A6A2D06008C431C /* Keyboards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keyboards.plist; sourceTree = "<group>"; };
+		4975DEC41A6A389700592AB1 /* SelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +116,7 @@
 			children = (
 				4962995E1A6A216B008C431C /* AppDelegate.swift */,
 				496299621A6A216B008C431C /* Main.storyboard */,
-				496299931A6A24DA008C431C /* KeyboardTableViewController.swift */,
+				4975DEC41A6A389700592AB1 /* SelectTableViewController.swift */,
 				496299651A6A216B008C431C /* Images.xcassets */,
 				496299671A6A216B008C431C /* LaunchScreen.xib */,
 				4962995C1A6A216B008C431C /* Supporting Files */,
@@ -298,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4962995F1A6A216B008C431C /* AppDelegate.swift in Sources */,
+				4975DEC51A6A389700592AB1 /* SelectTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +532,7 @@
 				4962997A1A6A216B008C431C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4962997B1A6A216B008C431C /* Build configuration list for PBXNativeTarget "altTests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +541,7 @@
 				4962997D1A6A216B008C431C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		496299A21A6A2CA1008C431C /* Build configuration list for PBXNativeTarget "keyboard" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +550,7 @@
 				496299A41A6A2CA1008C431C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
