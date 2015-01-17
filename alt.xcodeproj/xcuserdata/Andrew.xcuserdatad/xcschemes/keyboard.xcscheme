@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "496299811A6A21DD008C431C"
-               BuildableName = "customkeyboard.appex"
-               BlueprintName = "customkeyboard"
+               BlueprintIdentifier = "496299981A6A2CA1008C431C"
+               BuildableName = "keyboard.appex"
+               BlueprintName = "keyboard"
                ReferencedContainer = "container:alt.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "496299811A6A21DD008C431C"
-            BuildableName = "customkeyboard.appex"
-            BlueprintName = "customkeyboard"
+            BlueprintIdentifier = "496299981A6A2CA1008C431C"
+            BuildableName = "keyboard.appex"
+            BlueprintName = "keyboard"
             ReferencedContainer = "container:alt.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

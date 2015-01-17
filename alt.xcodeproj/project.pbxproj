@@ -8,14 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4962995F1A6A216B008C431C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962995E1A6A216B008C431C /* AppDelegate.swift */; };
-		496299611A6A216B008C431C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496299601A6A216B008C431C /* ViewController.swift */; };
 		496299641A6A216B008C431C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496299621A6A216B008C431C /* Main.storyboard */; };
 		496299661A6A216B008C431C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 496299651A6A216B008C431C /* Images.xcassets */; };
 		496299691A6A216B008C431C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 496299671A6A216B008C431C /* LaunchScreen.xib */; };
 		496299751A6A216B008C431C /* altTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496299741A6A216B008C431C /* altTests.swift */; };
-		496299871A6A21DD008C431C /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 496299861A6A21DD008C431C /* ActionViewController.swift */; };
-		496299891A6A21DD008C431C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496299881A6A21DD008C431C /* MainInterface.storyboard */; };
-		4962998C1A6A21DD008C431C /* customkeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 496299821A6A21DD008C431C /* customkeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4962999E1A6A2CA1008C431C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */; };
+		496299A11A6A2CA1008C431C /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 496299991A6A2CA1008C431C /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		496299A61A6A2D06008C431C /* Keyboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496299A51A6A2D06008C431C /* Keyboards.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,12 +25,12 @@
 			remoteGlobalIDString = 496299581A6A216B008C431C;
 			remoteInfo = alt;
 		};
-		4962998A1A6A21DD008C431C /* PBXContainerItemProxy */ = {
+		4962999F1A6A2CA1008C431C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 496299511A6A216B008C431C /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 496299811A6A21DD008C431C;
-			remoteInfo = customkeyboard;
+			remoteGlobalIDString = 496299981A6A2CA1008C431C;
+			remoteInfo = keyboard;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -42,7 +41,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				4962998C1A6A21DD008C431C /* customkeyboard.appex in Embed App Extensions */,
+				496299A11A6A2CA1008C431C /* keyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,17 +52,17 @@
 		496299591A6A216B008C431C /* alt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4962995D1A6A216B008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4962995E1A6A216B008C431C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		496299601A6A216B008C431C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		496299631A6A216B008C431C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		496299651A6A216B008C431C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		496299681A6A216B008C431C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4962996E1A6A216B008C431C /* altTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = altTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		496299731A6A216B008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		496299741A6A216B008C431C /* altTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = altTests.swift; sourceTree = "<group>"; };
-		496299821A6A21DD008C431C /* customkeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = customkeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		496299851A6A21DD008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		496299861A6A21DD008C431C /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
-		496299881A6A21DD008C431C /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		496299931A6A24DA008C431C /* KeyboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardTableViewController.swift; path = ../KeyboardTableViewController.swift; sourceTree = "<group>"; };
+		496299991A6A2CA1008C431C /* keyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = keyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4962999C1A6A2CA1008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		496299A51A6A2D06008C431C /* Keyboards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keyboards.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +80,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4962997F1A6A21DD008C431C /* Frameworks */ = {
+		496299961A6A2CA1008C431C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -96,7 +95,7 @@
 			children = (
 				4962995B1A6A216B008C431C /* alt */,
 				496299711A6A216B008C431C /* altTests */,
-				496299831A6A21DD008C431C /* customkeyboard */,
+				4962999A1A6A2CA1008C431C /* keyboard */,
 				4962995A1A6A216B008C431C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,7 +105,7 @@
 			children = (
 				496299591A6A216B008C431C /* alt.app */,
 				4962996E1A6A216B008C431C /* altTests.xctest */,
-				496299821A6A21DD008C431C /* customkeyboard.appex */,
+				496299991A6A2CA1008C431C /* keyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -115,8 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				4962995E1A6A216B008C431C /* AppDelegate.swift */,
-				496299601A6A216B008C431C /* ViewController.swift */,
 				496299621A6A216B008C431C /* Main.storyboard */,
+				496299931A6A24DA008C431C /* KeyboardTableViewController.swift */,
 				496299651A6A216B008C431C /* Images.xcassets */,
 				496299671A6A216B008C431C /* LaunchScreen.xib */,
 				4962995C1A6A216B008C431C /* Supporting Files */,
@@ -128,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				4962995D1A6A216B008C431C /* Info.plist */,
+				496299A51A6A2D06008C431C /* Keyboards.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -149,20 +149,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		496299831A6A21DD008C431C /* customkeyboard */ = {
+		4962999A1A6A2CA1008C431C /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				496299861A6A21DD008C431C /* ActionViewController.swift */,
-				496299881A6A21DD008C431C /* MainInterface.storyboard */,
-				496299841A6A21DD008C431C /* Supporting Files */,
+				4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */,
+				4962999B1A6A2CA1008C431C /* Supporting Files */,
 			);
-			path = customkeyboard;
+			path = keyboard;
 			sourceTree = "<group>";
 		};
-		496299841A6A21DD008C431C /* Supporting Files */ = {
+		4962999B1A6A2CA1008C431C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				496299851A6A21DD008C431C /* Info.plist */,
+				4962999C1A6A2CA1008C431C /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,7 +181,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				4962998B1A6A21DD008C431C /* PBXTargetDependency */,
+				496299A01A6A2CA1008C431C /* PBXTargetDependency */,
 			);
 			name = alt;
 			productName = alt;
@@ -207,21 +206,21 @@
 			productReference = 4962996E1A6A216B008C431C /* altTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		496299811A6A21DD008C431C /* customkeyboard */ = {
+		496299981A6A2CA1008C431C /* keyboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4962998D1A6A21DD008C431C /* Build configuration list for PBXNativeTarget "customkeyboard" */;
+			buildConfigurationList = 496299A21A6A2CA1008C431C /* Build configuration list for PBXNativeTarget "keyboard" */;
 			buildPhases = (
-				4962997E1A6A21DD008C431C /* Sources */,
-				4962997F1A6A21DD008C431C /* Frameworks */,
-				496299801A6A21DD008C431C /* Resources */,
+				496299951A6A2CA1008C431C /* Sources */,
+				496299961A6A2CA1008C431C /* Frameworks */,
+				496299971A6A2CA1008C431C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = customkeyboard;
-			productName = customkeyboard;
-			productReference = 496299821A6A21DD008C431C /* customkeyboard.appex */;
+			name = keyboard;
+			productName = keyboard;
+			productReference = 496299991A6A2CA1008C431C /* keyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -240,7 +239,7 @@
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 496299581A6A216B008C431C;
 					};
-					496299811A6A21DD008C431C = {
+					496299981A6A2CA1008C431C = {
 						CreatedOnToolsVersion = 6.2;
 					};
 				};
@@ -260,7 +259,7 @@
 			targets = (
 				496299581A6A216B008C431C /* alt */,
 				4962996D1A6A216B008C431C /* altTests */,
-				496299811A6A21DD008C431C /* customkeyboard */,
+				496299981A6A2CA1008C431C /* keyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -271,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				496299641A6A216B008C431C /* Main.storyboard in Resources */,
+				496299A61A6A2D06008C431C /* Keyboards.plist in Resources */,
 				496299691A6A216B008C431C /* LaunchScreen.xib in Resources */,
 				496299661A6A216B008C431C /* Images.xcassets in Resources */,
 			);
@@ -283,11 +283,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		496299801A6A21DD008C431C /* Resources */ = {
+		496299971A6A2CA1008C431C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496299891A6A21DD008C431C /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +297,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496299611A6A216B008C431C /* ViewController.swift in Sources */,
 				4962995F1A6A216B008C431C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,11 +309,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4962997E1A6A21DD008C431C /* Sources */ = {
+		496299951A6A2CA1008C431C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				496299871A6A21DD008C431C /* ActionViewController.swift in Sources */,
+				4962999E1A6A2CA1008C431C /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,10 +325,10 @@
 			target = 496299581A6A216B008C431C /* alt */;
 			targetProxy = 4962996F1A6A216B008C431C /* PBXContainerItemProxy */;
 		};
-		4962998B1A6A21DD008C431C /* PBXTargetDependency */ = {
+		496299A01A6A2CA1008C431C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 496299811A6A21DD008C431C /* customkeyboard */;
-			targetProxy = 4962998A1A6A21DD008C431C /* PBXContainerItemProxy */;
+			target = 496299981A6A2CA1008C431C /* keyboard */;
+			targetProxy = 4962999F1A6A2CA1008C431C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -489,24 +487,24 @@
 			};
 			name = Release;
 		};
-		4962998E1A6A21DD008C431C /* Debug */ = {
+		496299A31A6A2CA1008C431C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = customkeyboard/Info.plist;
+				INFOPLIST_FILE = keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
-		4962998F1A6A21DD008C431C /* Release */ = {
+		496299A41A6A2CA1008C431C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = customkeyboard/Info.plist;
+				INFOPLIST_FILE = keyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -541,11 +539,11 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		4962998D1A6A21DD008C431C /* Build configuration list for PBXNativeTarget "customkeyboard" */ = {
+		496299A21A6A2CA1008C431C /* Build configuration list for PBXNativeTarget "keyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4962998E1A6A21DD008C431C /* Debug */,
-				4962998F1A6A21DD008C431C /* Release */,
+				496299A31A6A2CA1008C431C /* Debug */,
+				496299A41A6A2CA1008C431C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>KeyboardDescription</key>
+		<string></string>
+		<key>KeyboardName</key>
+		<string>Tadpole</string>
+	</dict>
+	<dict>
+		<key>KeyboardDescription</key>
+		<string></string>
+		<key>KeyboardName</key>
+		<string>Dvorak</string>
+	</dict>
+	<dict>
+		<key>KeyboardDescription</key>
+		<string></string>
+		<key>KeyboardName</key>
+		<string>AZERTY</string>
+	</dict>
+	<dict>
+		<key>KeyboardDescription</key>
+		<string></string>
+		<key>KeyboardName</key>
+		<string>Colemak</string>
+	</dict>
+	<dict>
+		<key>KeyboardDescription</key>
+		<string></string>
+		<key>KeyboardName</key>
+		<string>Fitaly</string>
+	</dict>
+</array>
+</plist>
