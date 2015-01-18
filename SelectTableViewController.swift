@@ -15,12 +15,25 @@ class SelectTableViewController: UITableViewController {
     var currentCell:Int
     
     required init(coder aDecoder: NSCoder) {
-        let path = NSBundle.mainBundle().bundlePath + "/Keyboards.pList"
+    
+        //load property list file containing keyboards
+        let path = NSBundle.mainBundle().bundlePath + "/Keyboards.plist"
         var pListData = NSArray(contentsOfFile: path)
         keyboardData = pListData as [Dictionary<String,String>]
+        
+        //initialize array tracking cell heights
         cellHeights = [CGFloat](count: keyboardData.count, repeatedValue: 0)
         currentCell = -1
+        
         super.init(coder: aDecoder)
+        
+        //NSBundle.mainBundle().loadNibNamed("CustomCell", owner: self, options: nil)
+        tableView.registerClass(CustomCell.self, forCellReuseIdentifier: "KeyboardCell")
+        
+        //let nibPath = NSBundle.mainBundle().bundlePath + "/CustomCell.xib"
+        //var nibData = NSData(contentsOfFile: nibPath)
+        //var nib = UINib(data: nibData!, bundle: nil)
+        //tableView.registerNib(nibs[0], forCellReuseIdentifier: "YJe-TG-LYM-view-uZN-vt-IuR")
     }
     
     override func viewDidLoad() {
@@ -52,9 +65,10 @@ class SelectTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
-        cell.textLabel?.text = keyboardData[indexPath.row]["KeyboardName"]
+        cell.keyboardName.text = keyboardData[indexPath.row]["KeyboardName"]
+        //cell.textLabel?.text = keyboardData[indexPath.row]["KeyboardName"]
         
         return cell
     }    
