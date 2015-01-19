@@ -55,7 +55,6 @@ class SelectTableViewController: UITableViewController {
         }
         currentCell = indexPath.row
         cellHeights[currentCell] = 40
-        
         cell.keyboardDescription.hidden = false
         
         tableView.endUpdates()
@@ -70,7 +69,7 @@ class SelectTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
         cell.keyboardName.text = keyboardData[indexPath.row]["KeyboardName"]
-        cell.keyboardDescription.hidden = true
+        cell.keyboardDescription.text = keyboardData[indexPath.row]["KeyboardDescription"]
         
         return cell
     }
