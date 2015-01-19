@@ -11,21 +11,30 @@ import UIKit
 class CustomCell: UITableViewCell {
 
     @IBOutlet weak var keyboardName: UILabel!
+    @IBOutlet weak var keyboardDescription: UILabel!
+    @IBOutlet weak var enableKeyboardButton: UIButton!
+    
+    // MARK: - Lifecycle methods
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        //NSBundle.mainBundle().loadNibNamed("CustomCell", owner: self, options: nil)
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.addObserver(self, forKeyPath: "selected", options: NSKeyValueObservingOptions.New, context: nil)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        NSLog(keyPath)
+    }
+    
+    @IBAction func enableKeyboard(sender: AnyObject) {
+        NSLog("enabling keyboard")
+    }
+    
 }

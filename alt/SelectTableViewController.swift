@@ -15,6 +15,8 @@ class SelectTableViewController: UITableViewController {
     var cellHeights:[CGFloat]
     var currentCell:Int
     
+    // MARK: - Lifecycle methods
+    
     required init(coder aDecoder: NSCoder) {
     
         //load property list file containing keyboards
@@ -36,20 +38,25 @@ class SelectTableViewController: UITableViewController {
         tableView.registerNib(nib, forCellReuseIdentifier: "KeyboardCell")
     }
     
+    // MARK: - Table view data source
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return keyboardData.count
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as CustomCell
 
         tableView.beginUpdates()
         
         if (currentCell != -1) {
             cellHeights[currentCell] = 0
+            
         }
         currentCell = indexPath.row
         cellHeights[currentCell] = 40
+        
+        cell.keyboardDescription.hidden = false
         
         tableView.endUpdates()
     }
@@ -63,6 +70,7 @@ class SelectTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
         cell.keyboardName.text = keyboardData[indexPath.row]["KeyboardName"]
+        cell.keyboardDescription.hidden = true
         
         return cell
     }
