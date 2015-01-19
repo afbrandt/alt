@@ -14,35 +14,37 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var keyboardDescription: UILabel!
     @IBOutlet weak var enableKeyboardButton: UIButton!
     
-    var cellNumber : Int
-    
     // MARK: - Lifecycle methods
     
     required init(coder aDecoder: NSCoder) {
-        cellNumber = 0
         super.init(coder: aDecoder)
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.addObserver(self, forKeyPath: "hidden", options: NSKeyValueObservingOptions.New, context: nil)
-        
+        keyboardDescription.alpha = 0.0
     }
+
+    // MARK: - User interaction methods
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         //q&d no animation
-        keyboardDescription.hidden = !selected
+        //keyboardDescription.hidden = !selected
         
         if (selected) {
             //animate fade in
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.keyboardDescription?.alpha = 1.0
+                return
+            })
         } else {
             //animate fade out
+            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                self.keyboardDescription?.alpha = 0.0
+                return
+            })
         }
-    }
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        NSLog(keyboardName.text!)
     }
     
     @IBAction func enableKeyboard(sender: AnyObject) {

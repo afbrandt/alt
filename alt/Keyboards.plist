@@ -4,31 +4,31 @@
 <array>
 	<dict>
 		<key>KeyboardDescription</key>
-		<string></string>
+		<string>Tadpole is a small chorded keyboard about the size of a numeric keypad that can be used with one hand.</string>
 		<key>KeyboardName</key>
 		<string>Tadpole</string>
 	</dict>
 	<dict>
 		<key>KeyboardDescription</key>
-		<string></string>
+		<string>The Dvorak Simplified Keyboard has numerous properties designed to increase typing speed, decrease errors, and increase comfort</string>
 		<key>KeyboardName</key>
 		<string>Dvorak</string>
 	</dict>
 	<dict>
 		<key>KeyboardDescription</key>
-		<string></string>
+		<string>Something interesting here</string>
 		<key>KeyboardName</key>
 		<string>AZERTY</string>
 	</dict>
 	<dict>
 		<key>KeyboardDescription</key>
-		<string></string>
+		<string>The Colemak keyboard layout is an alternative to the standard QWERTY layout, offering a more incremental change for users already accustomed to the standard layout</string>
 		<key>KeyboardName</key>
 		<string>Colemak</string>
 	</dict>
 	<dict>
 		<key>KeyboardDescription</key>
-		<string></string>
+		<string>FITALY is a keyboard layout specifically optimized for stylus or touch-based input</string>
 		<key>KeyboardName</key>
 		<string>Fitaly</string>
 	</dict>
