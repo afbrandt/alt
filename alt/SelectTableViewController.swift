@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class SelectTableViewController: UITableViewController {
 
@@ -26,19 +27,13 @@ class SelectTableViewController: UITableViewController {
         currentCell = -1
         
         super.init(coder: aDecoder)
-        
-        //NSBundle.mainBundle().loadNibNamed("CustomCell", owner: self, options: nil)
-        tableView.registerClass(CustomCell.self, forCellReuseIdentifier: "KeyboardCell")
-        
-        //let nibPath = NSBundle.mainBundle().bundlePath + "/CustomCell.xib"
-        //var nibData = NSData(contentsOfFile: nibPath)
-        //var nib = UINib(data: nibData!, bundle: nil)
-        //tableView.registerNib(nibs[0], forCellReuseIdentifier: "YJe-TG-LYM-view-uZN-vt-IuR")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var nib = UINib(nibName: "CustomCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "KeyboardCell")
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,19 +63,7 @@ class SelectTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
         cell.keyboardName.text = keyboardData[indexPath.row]["KeyboardName"]
-        //cell.textLabel?.text = keyboardData[indexPath.row]["KeyboardName"]
         
         return cell
-    }    
-    
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
-    
-
 }

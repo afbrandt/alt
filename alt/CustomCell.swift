@@ -14,7 +14,7 @@ class CustomCell: UITableViewCell {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        NSBundle.mainBundle().loadNibNamed("CustomCell", owner: self, options: nil)
+        //NSBundle.mainBundle().loadNibNamed("CustomCell", owner: self, options: nil)
     }
 
     override func awakeFromNib() {
