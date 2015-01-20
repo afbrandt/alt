@@ -18,12 +18,6 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y22-vV-yhb">
-                        <rect key="frame" x="8" y="37" width="312" height="37"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zti-Ci-2iq">
                         <rect key="frame" x="266" y="4" width="47" height="30"/>
                         <state key="normal" title="Enable">
@@ -33,14 +27,18 @@
                             <action selector="enableKeyboard:" destination="l4n-kV-IgX" eventType="touchDown" id="bmK-K5-q1v"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JeZ-04-FII">
+                        <rect key="frame" x="0.0" y="40" width="320" height="42"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="enableKeyboardButton" destination="Zti-Ci-2iq" id="O1n-mF-ajJ"/>
-                <outlet property="keyboardDescription" destination="Y22-vV-yhb" id="aLf-XW-p4X"/>
+                <outlet property="keyboardContainer" destination="JeZ-04-FII" id="AEe-Rt-g5u"/>
                 <outlet property="keyboardName" destination="auC-ZF-XS0" id="COR-sj-l4z"/>
             </connections>
-            <point key="canvasLocation" x="282" y="375"/>
+            <point key="canvasLocation" x="282" y="373"/>
         </tableViewCell>
     </objects>
 </document>

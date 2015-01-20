@@ -11,8 +11,9 @@ import UIKit
 class CustomCell: UITableViewCell {
 
     @IBOutlet weak var keyboardName: UILabel!
-    @IBOutlet weak var keyboardDescription: UILabel!
     @IBOutlet weak var enableKeyboardButton: UIButton!
+    
+    @IBOutlet weak var keyboardContainer: UIView!
     
     var shortFrame, normalFrame : CGRect!
     
@@ -26,12 +27,12 @@ class CustomCell: UITableViewCell {
         super.awakeFromNib()
         
         //initialize transition frames
-        normalFrame = keyboardDescription.frame
+        normalFrame = keyboardContainer.frame
         shortFrame = CGRectMake(normalFrame.origin.x, normalFrame.origin.y, normalFrame.width, 0)
         
         //initialize first state
-        keyboardDescription.alpha = 0.0
-        keyboardDescription.frame = shortFrame
+        keyboardContainer.alpha = 0.0
+        keyboardContainer.frame = shortFrame
     }
 
     // MARK: - User interaction methods
@@ -44,22 +45,22 @@ class CustomCell: UITableViewCell {
         if (selected) {
             //animate fade in
             UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.keyboardDescription?.alpha = 1.0
-                self.keyboardDescription?.frame = self.normalFrame
+                self.keyboardContainer?.alpha = 1.0
+                self.keyboardContainer?.frame = self.normalFrame
                 return
             })
         } else {
             //animate fade out
             UIView.animateWithDuration(0.3, animations: { () -> Void in
-                self.keyboardDescription?.alpha = 0.0
-                self.keyboardDescription?.frame = self.shortFrame
+                self.keyboardContainer?.alpha = 0.0
+                self.keyboardContainer?.frame = self.shortFrame
                 return
             })
         }
     }
     
     @IBAction func enableKeyboard(sender: AnyObject) {
-        NSLog("enabling keyboard")
+        
     }
     
 }

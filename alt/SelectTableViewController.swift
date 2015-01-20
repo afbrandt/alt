@@ -11,7 +11,7 @@ import Foundation
 
 class SelectTableViewController: UITableViewController {
 
-    var keyboardData:[Dictionary<String,String>]
+    var keyboardData:[String]
     var cellHeights:[CGFloat]
     var currentCell:Int
     
@@ -22,7 +22,7 @@ class SelectTableViewController: UITableViewController {
         //load property list file containing keyboards
         let path = NSBundle.mainBundle().bundlePath + "/Keyboards.plist"
         var pListData = NSArray(contentsOfFile: path)
-        keyboardData = pListData as [Dictionary<String,String>]
+        keyboardData = pListData as [String]
         
         //initialize array tracking cell heights
         cellHeights = [CGFloat](count: keyboardData.count, repeatedValue: 0)
@@ -40,6 +40,7 @@ class SelectTableViewController: UITableViewController {
         //custom cell nib
         var nib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "KeyboardCell")
+        
     }
     
     // MARK: - Table view data source
@@ -58,8 +59,8 @@ class SelectTableViewController: UITableViewController {
             
         }
         currentCell = indexPath.row
-        cellHeights[currentCell] = 40
-        cell.keyboardDescription.hidden = false
+        cellHeights[currentCell] = 100
+        cell.keyboardContainer.hidden = false
         
         tableView.endUpdates()
     }
@@ -72,8 +73,9 @@ class SelectTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
-        cell.keyboardName.text = keyboardData[indexPath.row]["KeyboardName"]
-        cell.keyboardDescription.text = keyboardData[indexPath.row]["KeyboardDescription"]
+        
+        cell.keyboardName.text = keyboardData[indexPath.row]
+        //cell.keyboardContainer
         
         return cell
     }
