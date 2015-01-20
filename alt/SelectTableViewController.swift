@@ -33,7 +33,11 @@ class SelectTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.loadNibs()
+    }
+    
+    func loadNibs() {
+        //custom cell nib
         var nib = UINib(nibName: "CustomCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "KeyboardCell")
     }
@@ -73,4 +77,6 @@ class SelectTableViewController: UITableViewController {
         
         return cell
     }
+    
+    
 }

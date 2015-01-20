@@ -10,7 +10,8 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController {
 
-    @IBOutlet var nextKeyboardButton: UIButton!
+    //@IBOutlet var nextKeyboardButton: UIButton!
+    var mainView: UIView!
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -21,7 +22,22 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        // Perform custom UI setup here
+        var xibViews = NSBundle.mainBundle().loadNibNamed("CustomKeyboard", owner: self, options: nil)
+        self.mainView = xibViews[0] as UIView;
+        self.view.addSubview(mainView)
+        
+        for v in self.mainView.subviews as [UIButton]
+        {
+            if (v.tag >= 0)
+            {
+                v.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+            }
+            else if (v.tag == -1)
+            {
+                v.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
+            }
+        }
+        /** Perform custom UI setup here
         self.nextKeyboardButton = UIButton.buttonWithType(.System) as UIButton
     
         self.nextKeyboardButton.setTitle(NSLocalizedString("Next Keyboard", comment: "Title for 'Next Keyboard' button"), forState: .Normal)
@@ -35,13 +51,13 @@ class KeyboardViewController: UIInputViewController {
         var nextKeyboardButtonLeftSideConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
         var nextKeyboardButtonBottomConstraint = NSLayoutConstraint(item: self.nextKeyboardButton, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         self.view.addConstraints([nextKeyboardButtonLeftSideConstraint, nextKeyboardButtonBottomConstraint])
+        **/
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated
+    func btnPressed(button: UIButton) {
+    
     }
-
+    
     override func textWillChange(textInput: UITextInput) {
         // The app is about to change the document's contents. Perform any preparation here.
     }
@@ -56,7 +72,7 @@ class KeyboardViewController: UIInputViewController {
         } else {
             textColor = UIColor.blackColor()
         }
-        self.nextKeyboardButton.setTitleColor(textColor, forState: .Normal)
+        //self.nextKeyboardButton.setTitleColor(textColor, forState: .Normal)
     }
 
 }

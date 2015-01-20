@@ -14,6 +14,8 @@ class CustomCell: UITableViewCell {
     @IBOutlet weak var keyboardDescription: UILabel!
     @IBOutlet weak var enableKeyboardButton: UIButton!
     
+    var shortFrame, normalFrame : CGRect!
+    
     // MARK: - Lifecycle methods
     
     required init(coder aDecoder: NSCoder) {
@@ -22,7 +24,14 @@ class CustomCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        //initialize transition frames
+        normalFrame = keyboardDescription.frame
+        shortFrame = CGRectMake(normalFrame.origin.x, normalFrame.origin.y, normalFrame.width, 0)
+        
+        //initialize first state
         keyboardDescription.alpha = 0.0
+        keyboardDescription.frame = shortFrame
     }
 
     // MARK: - User interaction methods
@@ -36,12 +45,14 @@ class CustomCell: UITableViewCell {
             //animate fade in
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.keyboardDescription?.alpha = 1.0
+                self.keyboardDescription?.frame = self.normalFrame
                 return
             })
         } else {
             //animate fade out
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.keyboardDescription?.alpha = 0.0
+                self.keyboardDescription?.frame = self.shortFrame
                 return
             })
         }

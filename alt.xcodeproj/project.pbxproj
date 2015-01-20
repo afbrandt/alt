@@ -16,6 +16,7 @@
 		4962999E1A6A2CA1008C431C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */; };
 		496299A11A6A2CA1008C431C /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 496299991A6A2CA1008C431C /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		496299A61A6A2D06008C431C /* Keyboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496299A51A6A2D06008C431C /* Keyboards.plist */; };
+		49EFF07D1A6D7FF900185F04 /* CustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49EFF07C1A6D7FF900185F04 /* CustomKeyboard.xib */; };
 		49FE04E81A6C706300D59FB1 /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE04E71A6C706300D59FB1 /* SelectTableViewController.swift */; };
 		49FE04E91A6C70E600D59FB1 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4940C95C1A6B43FC00E6BDCD /* CustomCell.xib */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		4962999C1A6A2CA1008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		496299A51A6A2D06008C431C /* Keyboards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keyboards.plist; sourceTree = "<group>"; };
+		49EFF07C1A6D7FF900185F04 /* CustomKeyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomKeyboard.xib; sourceTree = "<group>"; };
 		49FE04E71A6C706300D59FB1 /* SelectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 		4962999A1A6A2CA1008C431C /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				49EFF07C1A6D7FF900185F04 /* CustomKeyboard.xib */,
 				4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */,
 				4962999B1A6A2CA1008C431C /* Supporting Files */,
 			);
@@ -296,6 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49EFF07D1A6D7FF900185F04 /* CustomKeyboard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +525,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -531,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = keyboard/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
