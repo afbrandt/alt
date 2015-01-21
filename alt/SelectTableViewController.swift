@@ -59,8 +59,8 @@ class SelectTableViewController: UITableViewController {
             
         }
         currentCell = indexPath.row
-        cellHeights[currentCell] = 100
-        cell.keyboardContainer.hidden = false
+        cellHeights[currentCell] = 230
+        //cell.keyboardContainer.hidden = false
         
         tableView.endUpdates()
     }
@@ -73,9 +73,12 @@ class SelectTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
-        
-        cell.keyboardName.text = keyboardData[indexPath.row]
-        //cell.keyboardContainer
+        var keyboardName = keyboardData[indexPath.row]
+        //var nib = UINib(nibName: keyboardName, bundle: nil)
+        cell.keyboardName.text = keyboardName
+        //cell.keyboardContainer.addSubview(nib.)
+        var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
+        cell.keyboardContainer.addSubview(nibs[0] as UIView)
         
         return cell
     }

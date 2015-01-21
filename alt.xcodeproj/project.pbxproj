@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		491B900C1A6F219F00605CC9 /* AZERTY.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B900B1A6F219F00605CC9 /* AZERTY.xib */; };
+		491B900F1A6F21BD00605CC9 /* Dvorak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B900E1A6F21BD00605CC9 /* Dvorak.xib */; };
+		491B90111A6F21C700605CC9 /* Colemak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B90101A6F21C700605CC9 /* Colemak.xib */; };
+		491B90131A6F21E100605CC9 /* Fitaly.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B90121A6F21E100605CC9 /* Fitaly.xib */; };
+		491B90151A6F21F100605CC9 /* Tadpole.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B90141A6F21F100605CC9 /* Tadpole.xib */; };
 		4940C95F1A6B472600E6BDCD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4940C95E1A6B472600E6BDCD /* CustomCell.swift */; };
 		4962995F1A6A216B008C431C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962995E1A6A216B008C431C /* AppDelegate.swift */; };
 		496299641A6A216B008C431C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 496299621A6A216B008C431C /* Main.storyboard */; };
@@ -53,6 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		491B900B1A6F219F00605CC9 /* AZERTY.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AZERTY.xib; sourceTree = "<group>"; };
+		491B900E1A6F21BD00605CC9 /* Dvorak.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dvorak.xib; sourceTree = "<group>"; };
+		491B90101A6F21C700605CC9 /* Colemak.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Colemak.xib; sourceTree = "<group>"; };
+		491B90121A6F21E100605CC9 /* Fitaly.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Fitaly.xib; sourceTree = "<group>"; };
+		491B90141A6F21F100605CC9 /* Tadpole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Tadpole.xib; sourceTree = "<group>"; };
 		4940C95C1A6B43FC00E6BDCD /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCell.xib; path = /Users/Andrew/Development/alt/alt/CustomCell.xib; sourceTree = "<absolute>"; };
 		4940C95E1A6B472600E6BDCD /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		496299591A6A216B008C431C /* alt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alt.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +107,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		491B900D1A6F21A700605CC9 /* Keyboards */ = {
+			isa = PBXGroup;
+			children = (
+				491B900B1A6F219F00605CC9 /* AZERTY.xib */,
+				491B900E1A6F21BD00605CC9 /* Dvorak.xib */,
+				491B90101A6F21C700605CC9 /* Colemak.xib */,
+				491B90121A6F21E100605CC9 /* Fitaly.xib */,
+				491B90141A6F21F100605CC9 /* Tadpole.xib */,
+			);
+			name = Keyboards;
+			sourceTree = "<group>";
+		};
 		496299501A6A216B008C431C = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +149,7 @@
 				4940C95E1A6B472600E6BDCD /* CustomCell.swift */,
 				496299651A6A216B008C431C /* Images.xcassets */,
 				496299671A6A216B008C431C /* LaunchScreen.xib */,
+				491B900D1A6F21A700605CC9 /* Keyboards */,
 				4962995C1A6A216B008C431C /* Supporting Files */,
 			);
 			path = alt;
@@ -280,11 +303,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				491B90111A6F21C700605CC9 /* Colemak.xib in Resources */,
+				491B900C1A6F219F00605CC9 /* AZERTY.xib in Resources */,
 				49FE04E91A6C70E600D59FB1 /* CustomCell.xib in Resources */,
 				496299641A6A216B008C431C /* Main.storyboard in Resources */,
 				496299A61A6A2D06008C431C /* Keyboards.plist in Resources */,
+				491B90151A6F21F100605CC9 /* Tadpole.xib in Resources */,
 				496299691A6A216B008C431C /* LaunchScreen.xib in Resources */,
 				496299661A6A216B008C431C /* Images.xcassets in Resources */,
+				491B900F1A6F21BD00605CC9 /* Dvorak.xib in Resources */,
+				491B90131A6F21E100605CC9 /* Fitaly.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

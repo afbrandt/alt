@@ -15,7 +15,7 @@ class CustomCell: UITableViewCell {
     
     @IBOutlet weak var keyboardContainer: UIView!
     
-    var shortFrame, normalFrame : CGRect!
+    var normalHeight : CGFloat!
     
     // MARK: - Lifecycle methods
     
@@ -27,12 +27,10 @@ class CustomCell: UITableViewCell {
         super.awakeFromNib()
         
         //initialize transition frames
-        normalFrame = keyboardContainer.frame
-        shortFrame = CGRectMake(normalFrame.origin.x, normalFrame.origin.y, normalFrame.width, 0)
+        normalHeight = keyboardContainer.frame.height
         
         //initialize first state
         keyboardContainer.alpha = 0.0
-        keyboardContainer.frame = shortFrame
     }
 
     // MARK: - User interaction methods
@@ -46,14 +44,12 @@ class CustomCell: UITableViewCell {
             //animate fade in
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.keyboardContainer?.alpha = 1.0
-                self.keyboardContainer?.frame = self.normalFrame
                 return
             })
         } else {
             //animate fade out
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.keyboardContainer?.alpha = 0.0
-                self.keyboardContainer?.frame = self.shortFrame
                 return
             })
         }
