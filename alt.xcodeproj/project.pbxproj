@@ -22,6 +22,11 @@
 		4962999E1A6A2CA1008C431C /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4962999D1A6A2CA1008C431C /* KeyboardViewController.swift */; };
 		496299A11A6A2CA1008C431C /* keyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 496299991A6A2CA1008C431C /* keyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		496299A61A6A2D06008C431C /* Keyboards.plist in Resources */ = {isa = PBXBuildFile; fileRef = 496299A51A6A2D06008C431C /* Keyboards.plist */; };
+		49E33A711A771CA5007E1707 /* Dvorak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B900E1A6F21BD00605CC9 /* Dvorak.xib */; };
+		49E33A721A771CA5007E1707 /* AZERTY.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B900B1A6F219F00605CC9 /* AZERTY.xib */; };
+		49E33A731A771CA5007E1707 /* Colemak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B90101A6F21C700605CC9 /* Colemak.xib */; };
+		49E33A741A771CA5007E1707 /* Fitaly.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B90121A6F21E100605CC9 /* Fitaly.xib */; };
+		49E33A751A771CA5007E1707 /* Tadpole.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B90141A6F21F100605CC9 /* Tadpole.xib */; };
 		49EFF07D1A6D7FF900185F04 /* CustomKeyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 49EFF07C1A6D7FF900185F04 /* CustomKeyboard.xib */; };
 		49FE04E81A6C706300D59FB1 /* SelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FE04E71A6C706300D59FB1 /* SelectTableViewController.swift */; };
 		49FE04E91A6C70E600D59FB1 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4940C95C1A6B43FC00E6BDCD /* CustomCell.xib */; };
@@ -350,6 +355,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49E33A711A771CA5007E1707 /* Dvorak.xib in Resources */,
+				49E33A721A771CA5007E1707 /* AZERTY.xib in Resources */,
+				49E33A731A771CA5007E1707 /* Colemak.xib in Resources */,
+				49E33A741A771CA5007E1707 /* Fitaly.xib in Resources */,
+				49E33A751A771CA5007E1707 /* Tadpole.xib in Resources */,
 				49EFF07D1A6D7FF900185F04 /* CustomKeyboard.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

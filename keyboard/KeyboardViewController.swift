@@ -44,20 +44,22 @@ class KeyboardViewController: UIInputViewController {
             var xibViews = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
             self.mainView = xibViews[0] as UIView;
             self.view.addSubview(mainView)
-        
-            /**
+            
+            //UIButton
             for v in self.mainView.subviews as [UIButton]
             {
-                if (v.tag >= 0)
-                {
-                    v.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
-                }
-                else if (v.tag == -1)
-                {
-                    v.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
-                }
+                //if v.isMemberOfClass(UIButton) {
+                    if (v.tag >= 0)
+                    {
+                        v.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+                    }
+                    else if (v.tag == -1)
+                    {
+                        v.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
+                    }
+                //}
             }
-            **/
+            
         }
         
     
@@ -80,7 +82,83 @@ class KeyboardViewController: UIInputViewController {
     }
 
     func btnPressed(button: UIButton) {
-    
+        
+        var string = ""
+        var backspace = false
+        let proxy = self.textDocumentProxy as UIKeyInput
+        
+        switch (button.tag)
+        {
+            case 0:
+                backspace = true
+            case 1:
+                string = "a"
+            case 2:
+                string = "b"
+            case 3:
+                string = "c"
+            case 4:
+                string = "d"
+            case 5:
+                string = "e"
+            case 6:
+                string = "f"
+            case 7:
+                string = "g"
+            case 8:
+                string = "h"
+            case 9:
+                string = "i"
+            case 10:
+                string = "j"
+            case 11:
+                string = "k"
+            case 12:
+                string = "l"
+            case 13:
+                string = "m"
+            case 14:
+                string = "n"
+            case 15:
+                string = "o"
+            case 16:
+                string = "p"
+            case 17:
+                string = "q"
+            case 18:
+                string = "r"
+            case 19:
+                string = "s"
+            case 20:
+                string = "t"
+            case 21:
+                string = "u"
+            case 22:
+                string = "v"
+            case 23:
+                string = "w"
+            case 24:
+                string = "x"
+            case 25:
+                string = "y"
+            case 26:
+                string = "z"
+            case 27:
+                string = " "
+            case 28:
+                string = "\n"
+            default:
+                //Nothing needs to happen, though default case should not be encountered
+                string = ""
+        }
+        if (!backspace)
+        {
+            proxy.insertText(string)
+        }
+        else if (backspace)
+        {
+            proxy.deleteBackward()
+        }
     }
     
     override func textWillChange(textInput: UITextInput) {
