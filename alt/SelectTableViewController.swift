@@ -75,10 +75,15 @@ class SelectTableViewController: UITableViewController {
         
         var keyboardName = keyboardData[indexPath.row]
         //var nib = UINib(nibName: keyboardName, bundle: nil)
+        
         cell.keyboardName.text = keyboardName
+        cell.keyboardString = keyboardName
+        
         //cell.keyboardContainer.addSubview(nib.)
         var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
         cell.keyboardContainer.addSubview(nibs[0] as UIView)
+        
+        //cell.nib = nibs[0] as UINib
         
         return cell
     }

@@ -12,31 +12,56 @@ class KeyboardViewController: UIInputViewController {
 
     //@IBOutlet var nextKeyboardButton: UIButton!
     var mainView: UIView!
+    var currentKeyboard: String!
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
     
         // Add custom view sizing constraints here
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        var xibViews = NSBundle.mainBundle().loadNibNamed("CustomKeyboard", owner: self, options: nil)
-        self.mainView = xibViews[0] as UIView;
-        self.view.addSubview(mainView)
         
-        for v in self.mainView.subviews as [UIButton]
-        {
-            if (v.tag >= 0)
-            {
-                v.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
-            }
-            else if (v.tag == -1)
-            {
-                v.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
-            }
+        
+        //var m = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group alt shared") as NSURL!
+        //NSLog(m.path!)
+        
+        
+        //check to see if new keyboard was chosen
+        let nameBucket = NSUserDefaults(suiteName: "group.alt.shared") as NSUserDefaults!
+        let keyboardName = nameBucket.objectForKey("nib") as String!
+        NSLog(keyboardName)
+        
+        if (currentKeyboard == nil) {
+            currentKeyboard = keyboardName
         }
+
+        if currentKeyboard == keyboardName {
+            var xibViews = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
+            self.mainView = xibViews[0] as UIView;
+            self.view.addSubview(mainView)
+        
+            /**
+            for v in self.mainView.subviews as [UIButton]
+            {
+                if (v.tag >= 0)
+                {
+                    v.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
+                }
+                else if (v.tag == -1)
+                {
+                    v.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
+                }
+            }
+            **/
+        }
+        
+    
+        
         /** Perform custom UI setup here
         self.nextKeyboardButton = UIButton.buttonWithType(.System) as UIButton
     
