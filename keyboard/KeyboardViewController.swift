@@ -13,6 +13,8 @@ class KeyboardViewController: UIInputViewController {
     //@IBOutlet var nextKeyboardButton: UIButton!
     var mainView: UIView!
     var currentKeyboard: String!
+    var inputCache: String!
+    var lexicon: UILexicon!
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -26,6 +28,10 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        inputCache = ""
+        self.requestSupplementaryLexiconWithCompletion({ (systemLexicon) -> Void in
+            self.lexicon = systemLexicon
+        })
         
         //var m = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group alt shared") as NSURL!
         //NSLog(m.path!)
@@ -85,12 +91,17 @@ class KeyboardViewController: UIInputViewController {
         
         var string = ""
         var backspace = false
+        var lexiconCheck = true
+        
         let proxy = self.textDocumentProxy as UIKeyInput
         
         switch (button.tag)
         {
             case 0:
                 backspace = true
+                if (inputCache.utf16Count > 1) {
+                    inputCache.substringToIndex(inputCache.endIndex.predecessor())
+                }
             case 1:
                 string = "a"
             case 2:
@@ -145,15 +156,27 @@ class KeyboardViewController: UIInputViewController {
                 string = "z"
             case 27:
                 string = " "
+                inputCache = ""
+                lexiconCheck = false
             case 28:
                 string = "\n"
+                inputCache = ""
+                lexiconCheck = false
             default:
                 //Nothing needs to happen, though default case should not be encountered
                 string = ""
         }
+        
         if (!backspace)
         {
             proxy.insertText(string)
+            inputCache.stringByAppendingString(string)
+            NSLog(inputCache)
+            /**
+            if (lexiconCheck) {
+                lexicon.inputCache
+            }
+            **/
         }
         else if (backspace)
         {
