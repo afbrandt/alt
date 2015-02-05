@@ -28,14 +28,16 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
             productRequest.delegate = self
             productRequest.start()
         } else {
-            //Alert user that purchase cannot be made
+            delegate.purchaseFailed(productName)
         }
     }
     
     //called after delegate method productRequest
     func buyProduct(product: SKProduct) {
         var payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addTransactionObserver(self)
         SKPaymentQueue.defaultQueue().addPayment(payment)
+        
     }
     
     // MARK: - SKProductsRequestDelegate method
@@ -54,17 +56,24 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     // MARK: - SKPaymentTransactionObserver method
     
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
+        var hasFinished: Bool = false
         for transaction: AnyObject in transactions {
-            if let tx: SKPaymentTransaction = transaction as? SKPaymentTransaction {
-                switch tx.transactionState {
-                case .Purchased:
-                    delegate.purchaseSuccessful(tx.payment.productIdentifier)
-                    break;
-                case .Failed:
-                    delegate.purchaseFailed(tx.payment.productIdentifier)
-                    break;
-                default:
-                    break;
+            if !hasFinished {
+                if let tx: SKPaymentTransaction = transaction as? SKPaymentTransaction {
+                    switch tx.transactionState {
+                    case .Purchased:
+                        delegate.purchaseSuccessful(tx.payment.productIdentifier)
+                        queue.finishTransaction(tx)
+                        hasFinished = true
+                        break;
+                    case .Failed:
+                        delegate.purchaseFailed(tx.payment.productIdentifier)
+                        queue.finishTransaction(tx)
+                        hasFinished = true
+                        break;
+                    default:
+                        break;
+                    }
                 }
             }
         }

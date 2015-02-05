@@ -15,7 +15,7 @@ class CustomCell: UITableViewCell {
     
     @IBOutlet weak var keyboardContainer: UIView!
     
-    var nib : UINib
+    //var nib : UINib
     var keyboardString : String!
     var productName : String!
     
@@ -28,7 +28,7 @@ class CustomCell: UITableViewCell {
     // MARK: - Lifecycle methods
     
     required init(coder aDecoder: NSCoder) {
-        nib = UINib()
+        //nib = UINib()
         super.init(coder: aDecoder)
     }
 

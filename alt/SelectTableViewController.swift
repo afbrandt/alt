@@ -103,11 +103,19 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
     // MARK: - IAPHelperDelegate methods
     
     func purchaseSuccessful(productString: String) {
-    
+        //notify user that purchase was successful, and update ui and keychain
+        var notice = UIAlertController(title: "Thank You!", message: "Purchase Successful!", preferredStyle: UIAlertControllerStyle.Alert)
+        var action = UIAlertAction(title: "OK", style: .Default) { action -> Void in }
+        notice.addAction(action)
+        self.presentViewController(notice, animated: true, completion: nil)
     }
     
     func purchaseFailed(productString: String) {
-    
+        //notify user that purchase failed
+        var notice = UIAlertController(title: "Alert", message: "Purchase Failed!", preferredStyle: UIAlertControllerStyle.Alert)
+        var action = UIAlertAction(title: "OK", style: .Default) { action -> Void in }
+        notice.addAction(action)
+        self.presentViewController(notice, animated: true, completion: nil)
     }
     
     /*
