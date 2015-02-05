@@ -2,10 +2,33 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>Fitaly</string>
-	<string>Colemak</string>
-	<string>AZERTY</string>
-	<string>Dvorak</string>
-	<string>Tadpole</string>
+	<dict>
+		<key>ProductName</key>
+		<string>doryStudiosAltKeysFitaly</string>
+		<key>Name</key>
+		<string>Fitaly</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>doryStudiosAltKeysColemak</string>
+		<key>Name</key>
+		<string>Colemak</string>
+	</dict>
+	<dict>
+		<key>Name</key>
+		<string>AZERTY</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>doryStudiosAltKeysDvorak</string>
+		<key>Name</key>
+		<string>Dvorak</string>
+	</dict>
+	<dict>
+		<key>ProductName</key>
+		<string>doryStudiosAltKeysTadpole</string>
+		<key>Name</key>
+		<string>Tadpole</string>
+	</dict>
 </array>
 </plist>

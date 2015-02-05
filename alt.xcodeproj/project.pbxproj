@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4902C8821A834A150008FB83 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4902C8811A834A150008FB83 /* IAPHelper.swift */; };
 		491261A41A71C27300F31DC0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491261A31A71C27300F31DC0 /* StoreKit.framework */; };
 		491B900C1A6F219F00605CC9 /* AZERTY.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B900B1A6F219F00605CC9 /* AZERTY.xib */; };
 		491B900F1A6F21BD00605CC9 /* Dvorak.xib in Resources */ = {isa = PBXBuildFile; fileRef = 491B900E1A6F21BD00605CC9 /* Dvorak.xib */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4902C8811A834A150008FB83 /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		491261A31A71C27300F31DC0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		491261A61A71FB5500F31DC0 /* alt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = alt.entitlements; sourceTree = "<group>"; };
 		491261B71A74C38A00F31DC0 /* keyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = keyboard.entitlements; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				496299621A6A216B008C431C /* Main.storyboard */,
 				4940C95C1A6B43FC00E6BDCD /* CustomCell.xib */,
 				4940C95E1A6B472600E6BDCD /* CustomCell.swift */,
+				4902C8811A834A150008FB83 /* IAPHelper.swift */,
 				496299651A6A216B008C431C /* Images.xcassets */,
 				496299671A6A216B008C431C /* LaunchScreen.xib */,
 				491B900D1A6F21A700605CC9 /* Keyboards */,
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4902C8821A834A150008FB83 /* IAPHelper.swift in Sources */,
 				4962995F1A6A216B008C431C /* AppDelegate.swift in Sources */,
 				4940C95F1A6B472600E6BDCD /* CustomCell.swift in Sources */,
 				49FE04E81A6C706300D59FB1 /* SelectTableViewController.swift in Sources */,

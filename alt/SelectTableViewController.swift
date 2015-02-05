@@ -10,11 +10,14 @@ import UIKit
 import Foundation
 import StoreKit
 
-class SelectTableViewController: UITableViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+//class SelectTableViewController: UITableViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+class SelectTableViewController: UITableViewController, IAPHelperDelegate {
 
-    var keyboardData:[String]
+    var keyboardData:[Dictionary<String,String>]
     var cellHeights:[CGFloat]
     var currentCell:Int
+    
+    var iapHelper:IAPHelper
     
     // MARK: - Lifecycle methods
     
@@ -23,13 +26,17 @@ class SelectTableViewController: UITableViewController, SKProductsRequestDelegat
         //load property list file containing keyboards
         let path = NSBundle.mainBundle().bundlePath + "/Keyboards.plist"
         var pListData = NSArray(contentsOfFile: path)
-        keyboardData = pListData as [String]
+        keyboardData = pListData as [Dictionary<String,String>]
         
         //initialize array tracking cell heights
         cellHeights = [CGFloat](count: keyboardData.count, repeatedValue: 0)
         currentCell = -1
         
+        iapHelper = IAPHelper()
+        
         super.init(coder: aDecoder)
+        
+        iapHelper.delegate = self
     }
     
     override func viewDidLoad() {
@@ -74,11 +81,15 @@ class SelectTableViewController: UITableViewController, SKProductsRequestDelegat
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
         
-        var keyboardName = keyboardData[indexPath.row]
+        var keyboardName = keyboardData[indexPath.row]["Name"]
+        var keyboardProductName = keyboardData[indexPath.row]["ProductName"]
         //var nib = UINib(nibName: keyboardName, bundle: nil)
         
         cell.keyboardName.text = keyboardName
         cell.keyboardString = keyboardName
+        
+        cell.productName = keyboardProductName
+        cell.helper = iapHelper
         
         //cell.keyboardContainer.addSubview(nib.)
         var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
@@ -89,6 +100,17 @@ class SelectTableViewController: UITableViewController, SKProductsRequestDelegat
         return cell
     }
     
+    // MARK: - IAPHelperDelegate methods
+    
+    func purchaseSuccessful(productString: String) {
+    
+    }
+    
+    func purchaseFailed(productString: String) {
+    
+    }
+    
+    /*
     // MARK: - IAP methods
     
     //called first
@@ -122,13 +144,14 @@ class SelectTableViewController: UITableViewController, SKProductsRequestDelegat
         }
     }
     
-    // MARK: - SKProductsRequestDelegate method
+    // MARK: - SKPaymentTransactionObserver method
     
     func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
         for transaction: AnyObject in transactions {
             if let tx: SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch tx.transactionState {
                 case .Purchased:
+                    
                     break;
                 case .Failed:
                     break;
@@ -138,5 +161,5 @@ class SelectTableViewController: UITableViewController, SKProductsRequestDelegat
             }
         }
     }
-    
+    */
 }

@@ -17,6 +17,11 @@ class CustomCell: UITableViewCell {
     
     var nib : UINib
     var keyboardString : String!
+    var productName : String!
+    
+    var helper : IAPHelper!
+    
+    var hasPurchased : Boolean!
     
     //var normalHeight : CGFloat!
     
@@ -66,6 +71,9 @@ class CustomCell: UITableViewCell {
         nameBucket.setObject(keyboardString, forKey: "nib")
         
         nameBucket.synchronize()
+        
+        
+        helper.attemptPurchase(productName)
         /**
         if (nameBucket.synchronize()) {
             NSLog("enabled keyboard")
