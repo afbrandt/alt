@@ -8,8 +8,9 @@
 
 import UIKit
 import Foundation
+import StoreKit
 
-class SelectTableViewController: UITableViewController {
+class SelectTableViewController: UITableViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
 
     var keyboardData:[String]
     var cellHeights:[CGFloat]
@@ -88,5 +89,54 @@ class SelectTableViewController: UITableViewController {
         return cell
     }
     
+    // MARK: - IAP methods
+    
+    //called first
+    func attemptPurchase(productName: String) {
+        if (SKPaymentQueue.canMakePayments()) {
+            var productID:NSSet = NSSet(object: productName)
+            var productRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
+            productRequest.delegate = self
+            productRequest.start()
+        } else {
+            //Alert user that purchase cannot be made
+        }
+    }
+    
+    //called after delegate method productRequest
+    func buyProduct(product: SKProduct) {
+        var payment = SKPayment(product: product)
+        SKPaymentQueue.defaultQueue().addPayment(payment)
+    }
+    
+    // MARK: - SKProductsRequestDelegate method
+    
+    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
+        var count: Int = response.products.count
+        if (count > 0) {
+            var validProducts = response.products
+            var product = validProducts[0] as SKProduct
+            buyProduct(product)
+        } else {
+            //something went wrong with lookup, try again?
+        }
+    }
+    
+    // MARK: - SKProductsRequestDelegate method
+    
+    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
+        for transaction: AnyObject in transactions {
+            if let tx: SKPaymentTransaction = transaction as? SKPaymentTransaction {
+                switch tx.transactionState {
+                case .Purchased:
+                    break;
+                case .Failed:
+                    break;
+                default:
+                    break;
+                }
+            }
+        }
+    }
     
 }
