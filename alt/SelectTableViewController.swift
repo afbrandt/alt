@@ -37,8 +37,8 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         iapHelper = IAPHelper()
         keychainHelper = KeychainHelper()
         
-        purchasedKeyboards = Set<String>()
-        
+        purchasedKeyboards = KeychainHelper.getAvailableKeyboards() as Set<String>
+
         super.init(coder: aDecoder)
         
         iapHelper.delegate = self

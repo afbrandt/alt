@@ -23,20 +23,27 @@ let kSecMatchLimitOneValue = kSecMatchLimitOne as NSString
 class KeychainHelper: NSObject {
     
     class func setKeyboardAvailable(keyboardName: String) {
-        self.setKeychainValue(keyboardName, forKey:"Available")
+        self.setKeychainValue("Available", forKey:keyboardName)
     }
     
-    class func getAvailableKeyboards() -> Dictionary<String,String> {
+    class func getAvailableKeyboards() -> Set<String> {
         let path = NSBundle.mainBundle().bundlePath + "/Keyboards.plist"
         var pListData = NSArray(contentsOfFile: path)
         var keyboardData = pListData as! [Dictionary<String,String>]
         
-        var result: Dictionary = Dictionary<String, String>()
+        var result: Set<String> = Set<String>()
         
         for var i = 0; i < keyboardData.count; i++ {
             var keyboardString = keyboardData[i]["Name"] as String!
             if let keychainValue = self.keychainValueForKey(keyboardString) as String? {
-                result.updateValue(keychainValue, forKey: keyboardString)
+                NSLog("key: %@ value: %@", keyboardString, keychainValue)
+                result.insert("keyboardString")
+            } else if keyboardString == "AZERTY" {
+                NSLog("first time setup, enable free keyboard")
+                self.setKeyboardAvailable(keyboardString)
+                result.insert(keyboardString)
+            } else {
+               // NSLog("couldn't find value for key: %@", keyboardString)
             }
         }
         
@@ -44,14 +51,32 @@ class KeychainHelper: NSObject {
     }
     
     class func setKeychainValue(value: String, forKey key: String) {
-        var data = key.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+        var data = value.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
         
         var query: NSMutableDictionary = NSMutableDictionary(objects: [kSecClassGenericPasswordValue, serviceIdentifier, key, data], forKeys: [kSecClassValue, kSecAttrServiceValue, kSecAttrAccountValue, kSecValueDataValue])
         
-        SecItemDelete(query as CFDictionaryRef)
+        //SecItemDelete(query as CFDictionaryRef)
         
         if key != "" {
-            var status = SecItemAdd(query, nil)
+            var status = SecItemAdd(query as CFDictionaryRef, nil) as OSStatus
+            
+            switch status {
+            case errSecSuccess:
+                NSLog("keychain added without error")
+                break;
+            case errSecParam:
+                NSLog("a parameter is missing from query")
+                break;
+            case errSecAuthFailed, errSecInteractionNotAllowed:
+                NSLog("some security error happened")
+                break;
+            case errSecDuplicateItem:
+                NSLog("the item already exists")
+                break;
+            default:
+                NSLog("something unexpected happened!")
+                break;
+            }
         }
     }
     
@@ -65,17 +90,31 @@ class KeychainHelper: NSObject {
         //search keychain
         var keychainResponse: AnyObject?
         var result: String?
-        var status = withUnsafeMutablePointer(&keychainResponse) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         
-        if status == errSecSuccess {
+        var status = withUnsafeMutablePointer(&keychainResponse) { SecItemCopyMatching(query as CFDictionaryRef, UnsafeMutablePointer($0)) }
+        
+        switch status {
+        case errSecSuccess:
+            NSLog("value found")
             if let data = keychainResponse as! NSData? {
                 if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    result = string as! String
+                    result = string as String
                 }
             }
+            break;
+        case errSecItemNotFound:
+            NSLog("key %@ not found", key)
+            break;
+        case errSecAuthFailed, errSecInteractionNotAllowed:
+            NSLog("some security error happened")
+            break;
+        default:
+            NSLog("something unexpected happened!")
+            break;
         }
         
         return result
+        
         /*
         let status: OSStatus = SecItemCopyMatching(query, &typeRef)
         let opaque = typeRef?.toOpaque()
