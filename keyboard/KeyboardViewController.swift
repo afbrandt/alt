@@ -39,7 +39,7 @@ class KeyboardViewController: UIInputViewController {
         
         //check to see if new keyboard was chosen
         let nameBucket = NSUserDefaults(suiteName: "group.alt.shared") as NSUserDefaults!
-        let keyboardName = nameBucket.objectForKey("nib") as String!
+        let keyboardName = nameBucket.objectForKey("nib") as! String
         NSLog(keyboardName)
         
         if (currentKeyboard == nil) {
@@ -48,13 +48,13 @@ class KeyboardViewController: UIInputViewController {
 
         if currentKeyboard == keyboardName {
             var xibViews = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
-            self.mainView = xibViews[0] as UIView;
+            self.mainView = xibViews[0] as! UIView;
             self.view.addSubview(mainView)
             
             //UIButton
-            for v in self.mainView.subviews as [UIButton]
+            for v in self.mainView.subviews as! [UIButton]
             {
-                //if v.isMemberOfClass(UIButton) {
+                //if v.isMemberOfClass(UIButton∫) {
                     if (v.tag >= 0)
                     {
                         v.addTarget(self, action: "btnPressed:", forControlEvents: .TouchUpInside)
@@ -93,7 +93,7 @@ class KeyboardViewController: UIInputViewController {
         var backspace = false
         var lexiconCheck = true
         
-        let proxy = self.textDocumentProxy as UIKeyInput
+        let proxy = self.textDocumentProxy as! UIKeyInput
         
         switch (button.tag)
         {
@@ -192,7 +192,7 @@ class KeyboardViewController: UIInputViewController {
         // The app has just changed the document's contents, the document context has been updated.
     
         var textColor: UIColor
-        var proxy = self.textDocumentProxy as UITextDocumentProxy
+        var proxy = self.textDocumentProxy as! UITextDocumentProxy
         if proxy.keyboardAppearance == UIKeyboardAppearance.Dark {
             textColor = UIColor.whiteColor()
         } else {

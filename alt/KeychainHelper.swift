@@ -29,7 +29,7 @@ class KeychainHelper: NSObject {
     class func getAvailableKeyboards() -> Dictionary<String,String> {
         let path = NSBundle.mainBundle().bundlePath + "/Keyboards.plist"
         var pListData = NSArray(contentsOfFile: path)
-        var keyboardData = pListData as [Dictionary<String,String>]
+        var keyboardData = pListData as! [Dictionary<String,String>]
         
         var result: Dictionary = Dictionary<String, String>()
         
@@ -68,9 +68,9 @@ class KeychainHelper: NSObject {
         var status = withUnsafeMutablePointer(&keychainResponse) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
         
         if status == errSecSuccess {
-            if let data = keychainResponse as NSData? {
+            if let data = keychainResponse as! NSData? {
                 if let string = NSString(data: data, encoding: NSUTF8StringEncoding) {
-                    result = string
+                    result = string as! String
                 }
             }
         }

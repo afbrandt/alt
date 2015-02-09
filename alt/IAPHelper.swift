@@ -24,7 +24,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
     func attemptPurchase(productName: String) {
         if (SKPaymentQueue.canMakePayments()) {
             var productID:NSSet = NSSet(object: productName)
-            var productRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
+            var productRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<NSObject>)
             productRequest.delegate = self
             productRequest.start()
         } else {
@@ -46,7 +46,7 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
         var count: Int = response.products.count
         if (count > 0) {
             var validProducts = response.products
-            var product = validProducts[0] as SKProduct
+            var product = validProducts[0] as! SKProduct
             buyProduct(product)
         } else {
             //something went wrong with lookup, try again?
@@ -64,12 +64,12 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                     case .Purchased:
                         delegate.purchaseSuccessful(tx.payment.productIdentifier)
                         queue.finishTransaction(tx)
-                        hasFinished = true
+                        //hasFinished = true
                         break;
                     case .Failed:
-                        delegate.purchaseFailed(tx.payment.productIdentifier)
+                        //delegate.purchaseFailed(tx.payment.productIdentifier)
                         queue.finishTransaction(tx)
-                        hasFinished = true
+                        //hasFinished = true
                         break;
                     default:
                         break;

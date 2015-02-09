@@ -80,7 +80,7 @@
 		491B90141A6F21F100605CC9 /* Tadpole.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Tadpole.xib; sourceTree = "<group>"; };
 		4940C95C1A6B43FC00E6BDCD /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomCell.xib; path = /Users/Andrew/Development/alt/alt/CustomCell.xib; sourceTree = "<absolute>"; };
 		4940C95E1A6B472600E6BDCD /* CustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		496299591A6A216B008C431C /* alt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = alt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		496299591A6A216B008C431C /* AltKeys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AltKeys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4962995D1A6A216B008C431C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4962995E1A6A216B008C431C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		496299631A6A216B008C431C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		4962995A1A6A216B008C431C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				496299591A6A216B008C431C /* alt.app */,
+				496299591A6A216B008C431C /* AltKeys.app */,
 				4962996E1A6A216B008C431C /* altTests.xctest */,
 				496299991A6A2CA1008C431C /* keyboard.appex */,
 			);
@@ -225,9 +225,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		496299581A6A216B008C431C /* alt */ = {
+		496299581A6A216B008C431C /* AltKeys */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 496299781A6A216B008C431C /* Build configuration list for PBXNativeTarget "alt" */;
+			buildConfigurationList = 496299781A6A216B008C431C /* Build configuration list for PBXNativeTarget "AltKeys" */;
 			buildPhases = (
 				496299551A6A216B008C431C /* Sources */,
 				496299561A6A216B008C431C /* Frameworks */,
@@ -239,9 +239,9 @@
 			dependencies = (
 				496299A01A6A2CA1008C431C /* PBXTargetDependency */,
 			);
-			name = alt;
+			name = AltKeys;
 			productName = alt;
-			productReference = 496299591A6A216B008C431C /* alt.app */;
+			productReference = 496299591A6A216B008C431C /* AltKeys.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4962996D1A6A216B008C431C /* altTests */ = {
@@ -329,7 +329,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				496299581A6A216B008C431C /* alt */,
+				496299581A6A216B008C431C /* AltKeys */,
 				4962996D1A6A216B008C431C /* altTests */,
 				496299981A6A2CA1008C431C /* keyboard */,
 			);
@@ -412,7 +412,7 @@
 /* Begin PBXTargetDependency section */
 		496299701A6A216B008C431C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 496299581A6A216B008C431C /* alt */;
+			target = 496299581A6A216B008C431C /* AltKeys */;
 			targetProxy = 4962996F1A6A216B008C431C /* PBXContainerItemProxy */;
 		};
 		496299A01A6A2CA1008C431C /* PBXTargetDependency */ = {
@@ -539,7 +539,7 @@
 				INFOPLIST_FILE = alt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AltKeys;
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -560,7 +560,7 @@
 				INFOPLIST_FILE = alt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = AltKeys;
 				PROVISIONING_PROFILE = "";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -648,7 +648,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		496299781A6A216B008C431C /* Build configuration list for PBXNativeTarget "alt" */ = {
+		496299781A6A216B008C431C /* Build configuration list for PBXNativeTarget "AltKeys" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				496299791A6A216B008C431C /* Debug */,

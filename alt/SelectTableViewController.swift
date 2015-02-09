@@ -14,10 +14,12 @@ import StoreKit
 class SelectTableViewController: UITableViewController, IAPHelperDelegate {
 
     var keyboardData:[Dictionary<String,String>]
+    var purchasedKeyboards:Set<String>
     var cellHeights:[CGFloat]
     var currentCell:Int
     
     var iapHelper:IAPHelper
+    var keychainHelper:KeychainHelper
     
     // MARK: - Lifecycle methods
     
@@ -26,13 +28,16 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         //load property list file containing keyboards
         let path = NSBundle.mainBundle().bundlePath + "/Keyboards.plist"
         var pListData = NSArray(contentsOfFile: path)
-        keyboardData = pListData as [Dictionary<String,String>]
+        keyboardData = pListData as! [Dictionary<String,String>]
         
         //initialize array tracking cell heights
         cellHeights = [CGFloat](count: keyboardData.count, repeatedValue: 0)
         currentCell = -1
         
         iapHelper = IAPHelper()
+        keychainHelper = KeychainHelper()
+        
+        purchasedKeyboards = Set<String>()
         
         super.init(coder: aDecoder)
         
@@ -58,7 +63,7 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as CustomCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomCell
 
         tableView.beginUpdates()
         
@@ -79,7 +84,7 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as CustomCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("KeyboardCell", forIndexPath: indexPath) as! CustomCell
         
         var keyboardName = keyboardData[indexPath.row]["Name"]
         var keyboardProductName = keyboardData[indexPath.row]["ProductName"]
@@ -93,7 +98,7 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         
         //cell.keyboardContainer.addSubview(nib.)
         var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
-        cell.keyboardContainer.addSubview(nibs[0] as UIView)
+        cell.keyboardContainer.addSubview(nibs[0] as! UIView)
         
         //cell.nib = nibs[0] as UINib
         
@@ -104,10 +109,22 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
     
     func purchaseSuccessful(productString: String) {
         //notify user that purchase was successful, and update ui and keychain
+        
+        var name: String = ""
+        
+        for var i = 0; i < keyboardData.count; i++ {
+            if productString == keyboardData[i]["Name"] {
+                name = productString
+            }
+        }
+        
+        KeychainHelper.setKeyboardAvailable(name)
+        /*
         var notice = UIAlertController(title: "Thank You!", message: "Purchase Successful!", preferredStyle: UIAlertControllerStyle.Alert)
         var action = UIAlertAction(title: "OK", style: .Default) { action -> Void in }
         notice.addAction(action)
         self.presentViewController(notice, animated: true, completion: nil)
+        */
     }
     
     func purchaseFailed(productString: String) {
