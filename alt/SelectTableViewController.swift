@@ -96,14 +96,11 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         cell.productName = keyboardProductName
         cell.helper = iapHelper
         
-        /*
         if (purchasedKeyboards.contains(keyboardName!)) {
-            cell.hasPurchased = true
-        } else {
-            cell.hasPurchased = false
-            cell.enableKeyboardButton.setTitle("Purchase", forState: .Normal)
+            //cell.hasPurchased = true
+            cell.enable()
+            //cell.enableKeyboardButton.setTitle("Select", forState: .Normal)
         }
-        */
         //cell.keyboardContainer.addSubview(nib.)
         var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
         cell.keyboardContainer.addSubview(nibs[0] as! UIView)
@@ -118,13 +115,13 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
     func purchaseSuccessful(productString: String) {
         //notify user that purchase was successful, and update ui and keychain
         
-        var name: String = ""
+        var name: String!
         
         for var i = 0; i < keyboardData.count; i++ {
             if productString == keyboardData[i]["ProductName"] {
-                name = productString
+                name = keyboardData[i]["Name"]
                 var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! CustomCell
-                cell.hasPurchased = true
+                //cell.hasPurchased = true
                 cell.enable()
             }
         }

@@ -32,6 +32,7 @@ class CustomCell: UITableViewCell {
     
     var observable : CustomCellObserver
     var hasPurchased : Bool
+    var isEnabled : Bool
     
     //var normalHeight : CGFloat!
     
@@ -41,6 +42,7 @@ class CustomCell: UITableViewCell {
         //nib = UINib()
         observable = CustomCellObserver()
         hasPurchased = false
+        isEnabled = false
         super.init(coder: aDecoder)
     }
 
@@ -79,14 +81,21 @@ class CustomCell: UITableViewCell {
     
     @IBAction func enableKeyboard(sender: AnyObject) {
         
-        var nameBucket = NSUserDefaults(suiteName: "group.alt.shared") as NSUserDefaults!
-        //var name : NSString = keyboardName.text!
-        nameBucket.setObject(keyboardString, forKey: "nib")
+        if (observable.hasPurchased) {
         
-        nameBucket.synchronize()
+            var nameBucket = NSUserDefaults(suiteName: "group.alt.shared") as NSUserDefaults!
+            isEnabled = true;
+            //var name : NSString = keyboardName.text!
+            nameBucket.setObject(keyboardString, forKey: "nib")
         
+            nameBucket.synchronize()
+            
+        } else {
         
-        helper.attemptPurchase(productName)
+            helper.attemptPurchase(productName)
+            
+        }
+        
         /**
         if (nameBucket.synchronize()) {
             NSLog("enabled keyboard")
@@ -95,7 +104,7 @@ class CustomCell: UITableViewCell {
         }
         **/
 
-        nameBucket = nil
+        //nameBucket = nil
         //var m = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group alt shared") as NSURL!
         //NSLog(m.path!)
         

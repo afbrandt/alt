@@ -36,14 +36,10 @@ class KeychainHelper: NSObject {
         for var i = 0; i < keyboardData.count; i++ {
             var keyboardString = keyboardData[i]["Name"] as String!
             if let keychainValue = self.keychainValueForKey(keyboardString) as String? {
-                #if DEBUG
                 NSLog("key: %@ value: %@", keyboardString, keychainValue)
-                #endif
                 result.insert(keyboardString)
             } else if keyboardString == "AZERTY" {
-                #if DEBUG
                 NSLog("first time setup, enable free keyboard")
-                #endif
                 self.setKeyboardAvailable(keyboardString)
                 result.insert(keyboardString)
             } else {
