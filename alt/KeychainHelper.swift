@@ -124,18 +124,5 @@ class KeychainHelper: NSObject {
         }
         
         return result
-        
-        /*
-        let status: OSStatus = SecItemCopyMatching(query, &typeRef)
-        let opaque = typeRef?.toOpaque()
-
-        if let o = opaque? {
-            let retrievedData = Unmanaged<NSData>.fromOpaque(o).takeUnretainedValue()
-            
-            result = NSString(data: retrievedData, encoding: NSUTF8StringEncoding)
-        } else {
-            return nil
-        }
-        */
     }
 }

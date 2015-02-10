@@ -20,6 +20,7 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
     
     var iapHelper:IAPHelper
     var keychainHelper:KeychainHelper
+    var activeKeyboard:String!
     
     // MARK: - Lifecycle methods
     
@@ -34,9 +35,11 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         cellHeights = [CGFloat](count: keyboardData.count, repeatedValue: 0)
         currentCell = -1
         
+        var nameBucket = NSUserDefaults(suiteName: "group.alt.shared") as NSUserDefaults!
+        activeKeyboard = nameBucket.stringForKey("nib")
+        
         iapHelper = IAPHelper()
         keychainHelper = KeychainHelper()
-        
         purchasedKeyboards = KeychainHelper.getAvailableKeyboards() as Set<String>
 
         super.init(coder: aDecoder)
@@ -69,11 +72,9 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         
         if (currentCell != -1) {
             cellHeights[currentCell] = 0
-            
         }
         currentCell = indexPath.row
         cellHeights[currentCell] = 230
-        //cell.keyboardContainer.hidden = false
         
         tableView.endUpdates()
     }
@@ -88,7 +89,6 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         
         var keyboardName = keyboardData[indexPath.row]["Name"]
         var keyboardProductName = keyboardData[indexPath.row]["ProductName"]
-        //var nib = UINib(nibName: keyboardName, bundle: nil)
         
         cell.keyboardName.text = keyboardName
         cell.keyboardString = keyboardName
@@ -97,15 +97,14 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         cell.helper = iapHelper
         
         if (purchasedKeyboards.contains(keyboardName!)) {
-            //cell.hasPurchased = true
             cell.enable()
-            //cell.enableKeyboardButton.setTitle("Select", forState: .Normal)
         }
-        //cell.keyboardContainer.addSubview(nib.)
+        
+        if (keyboardName == activeKeyboard) {
+            cell.setActive(true)
+        }
         var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
         cell.keyboardContainer.addSubview(nibs[0] as! UIView)
-        
-        //cell.nib = nibs[0] as UINib
         
         return cell
     }
@@ -127,13 +126,6 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         }
         
         KeychainHelper.setKeyboardAvailable(name)
-        
-        /*
-        var notice = UIAlertController(title: "Thank You!", message: "Purchase Successful!", preferredStyle: UIAlertControllerStyle.Alert)
-        var action = UIAlertAction(title: "OK", style: .Default) { action -> Void in }
-        notice.addAction(action)
-        self.presentViewController(notice, animated: true, completion: nil)
-        */
     }
     
     func purchaseFailed(productString: String) {
@@ -144,56 +136,9 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         self.presentViewController(notice, animated: true, completion: nil)
     }
     
-    /*
-    // MARK: - IAP methods
-    
-    //called first
-    func attemptPurchase(productName: String) {
-        if (SKPaymentQueue.canMakePayments()) {
-            var productID:NSSet = NSSet(object: productName)
-            var productRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID)
-            productRequest.delegate = self
-            productRequest.start()
-        } else {
-            //Alert user that purchase cannot be made
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if keyPath == "isEnabled" {
+            NSLog("noticed change in enabled")
         }
     }
-    
-    //called after delegate method productRequest
-    func buyProduct(product: SKProduct) {
-        var payment = SKPayment(product: product)
-        SKPaymentQueue.defaultQueue().addPayment(payment)
-    }
-    
-    // MARK: - SKProductsRequestDelegate method
-    
-    func productsRequest(request: SKProductsRequest!, didReceiveResponse response: SKProductsResponse!) {
-        var count: Int = response.products.count
-        if (count > 0) {
-            var validProducts = response.products
-            var product = validProducts[0] as SKProduct
-            buyProduct(product)
-        } else {
-            //something went wrong with lookup, try again?
-        }
-    }
-    
-    // MARK: - SKPaymentTransactionObserver method
-    
-    func paymentQueue(queue: SKPaymentQueue!, updatedTransactions transactions: [AnyObject]!) {
-        for transaction: AnyObject in transactions {
-            if let tx: SKPaymentTransaction = transaction as? SKPaymentTransaction {
-                switch tx.transactionState {
-                case .Purchased:
-                    
-                    break;
-                case .Failed:
-                    break;
-                default:
-                    break;
-                }
-            }
-        }
-    }
-    */
 }

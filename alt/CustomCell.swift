@@ -24,7 +24,6 @@ class CustomCell: UITableViewCell {
     
     @IBOutlet weak var keyboardContainer: UIView!
     
-    //var nib : UINib
     var keyboardString : String!
     var productName : String!
     
@@ -34,12 +33,9 @@ class CustomCell: UITableViewCell {
     var hasPurchased : Bool
     var isEnabled : Bool
     
-    //var normalHeight : CGFloat!
-    
     // MARK: - Lifecycle methods
     
     required init(coder aDecoder: NSCoder) {
-        //nib = UINib()
         observable = CustomCellObserver()
         hasPurchased = false
         isEnabled = false
@@ -49,20 +45,16 @@ class CustomCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        //initialize transition frames
-        //normalHeight = keyboardContainer.frame.height
-        
         //initialize first state
         keyboardContainer.alpha = 0.0
         observable.addObserver(self, forKeyPath: "hasPurchased", options: .New, context: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notifiedKeyboardChange:" , name:"keyboard-enabled", object: nil)
     }
 
     // MARK: - User interaction methods
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        //q&d no animation
-        //keyboardDescription.hidden = !selected
         
         if (selected) {
             //animate fade in
@@ -82,60 +74,40 @@ class CustomCell: UITableViewCell {
     @IBAction func enableKeyboard(sender: AnyObject) {
         
         if (observable.hasPurchased) {
-        
             var nameBucket = NSUserDefaults(suiteName: "group.alt.shared") as NSUserDefaults!
             isEnabled = true;
-            //var name : NSString = keyboardName.text!
             nameBucket.setObject(keyboardString, forKey: "nib")
         
             nameBucket.synchronize()
-            
         } else {
-        
             helper.attemptPurchase(productName)
-            
         }
-        
-        /**
-        if (nameBucket.synchronize()) {
-            NSLog("enabled keyboard")
-            var nameTest = nameBucket.stringForKey("nib") as String!
-            NSLog(nameTest)
-        }
-        **/
-
-        //nameBucket = nil
-        //var m = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group alt shared") as NSURL!
-        //NSLog(m.path!)
-        
-        /**
-        var pListPath = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("Plugins/keyboard.appex/Info.plist") as String
-        var basePath = NSBundle.mainBundle().bundlePath
-        var keyPath = basePath.stringByAppendingPathComponent("Plugins/keyboard.appex/CustomKeyboard.nib") as String
-        var nibName = keyboardName.text! as String
-        var nibPath = basePath.stringByAppendingPathComponent(nibName.stringByAppendingPathExtension("nib")!) as String
-        var fMgr = NSFileManager.defaultManager()
-        
-        if (!keyPath.isEmpty) {
-            var error = NSErrorPointer()
-            if (fMgr.fileExistsAtPath(keyPath)) {
-                fMgr.removeItemAtPath(keyPath, error: error)
-                fMgr.copyItemAtPath(nibPath, toPath: keyPath, error: error)
-            }
-            if (fMgr.isWritableFileAtPath(keyPath)) {
-                fMgr.copyItemAtPath(nibPath, toPath: keyPath, error: error)
-
-                //NSLog("can write to plist")
-                //var appex = NSKeyedUnarchiver.unarchiveObjectWithFile(pListPath) as Dictionary<String,String>
-                //NSLog(appex["Bundle display name"]!)
-            }
-            fMgr.copyItemAtPath(nibPath, toPath: keyPath, error: error)
-        }
-        **/
+        self.setActive(true)
     }
     
     func enable() {
         observable.hasPurchased = true
+    }
+    
+    func setActive(active: Bool) {
+        if active {
+            enableKeyboardButton.setTitle("Selected", forState: .Normal)
+            NSNotificationCenter.defaultCenter().postNotificationName("keyboard-enabled", object: keyboardString)
+        } else if observable.hasPurchased {
+            enableKeyboardButton.setTitle("Enable", forState: .Normal)
+        } else {
+            enableKeyboardButton.setTitle("Purchase", forState: .Normal)
+        }
+    }
+    
+    func notifiedKeyboardChange(message: NSNotification) {
+        if let string = message.object as! String! {
+            if string == keyboardString {
+                NSLog("%@ %@", keyboardString, string)
+            } else {
+                self.setActive(false)
+            }
+        }
     }
     
     override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
