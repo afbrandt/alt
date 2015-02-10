@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import Foundation
+
+class CustomCellObserver: NSObject {
+    dynamic var hasPurchased: Bool
+    
+    override init() {
+        hasPurchased = false;
+    }
+}
 
 class CustomCell: UITableViewCell {
 
@@ -21,7 +30,8 @@ class CustomCell: UITableViewCell {
     
     var helper : IAPHelper!
     
-    var hasPurchased : Boolean!
+    var observable : CustomCellObserver
+    var hasPurchased : Bool
     
     //var normalHeight : CGFloat!
     
@@ -29,6 +39,8 @@ class CustomCell: UITableViewCell {
     
     required init(coder aDecoder: NSCoder) {
         //nib = UINib()
+        observable = CustomCellObserver()
+        hasPurchased = false
         super.init(coder: aDecoder)
     }
 
@@ -40,6 +52,7 @@ class CustomCell: UITableViewCell {
         
         //initialize first state
         keyboardContainer.alpha = 0.0
+        observable.addObserver(self, forKeyPath: "hasPurchased", options: .New, context: nil)
     }
 
     // MARK: - User interaction methods
@@ -110,6 +123,18 @@ class CustomCell: UITableViewCell {
             fMgr.copyItemAtPath(nibPath, toPath: keyPath, error: error)
         }
         **/
+    }
+    
+    func enable() {
+        observable.hasPurchased = true
+    }
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    
+        if keyPath == "hasPurchased" {
+            NSLog("noticed purchase change for keyboard %@", keyboardString)
+            enableKeyboardButton.setTitle("Enable", forState: .Normal)
+        }
     }
     
 }

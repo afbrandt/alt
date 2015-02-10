@@ -583,7 +583,7 @@
 				INFOPLIST_FILE = altTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/alt.app/alt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AltKeys.app/AltKeys";
 			};
 			name = Debug;
 		};
@@ -598,7 +598,7 @@
 				INFOPLIST_FILE = altTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/alt.app/alt";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AltKeys.app/AltKeys";
 			};
 			name = Release;
 		};

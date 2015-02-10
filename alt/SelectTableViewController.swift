@@ -96,6 +96,14 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         cell.productName = keyboardProductName
         cell.helper = iapHelper
         
+        /*
+        if (purchasedKeyboards.contains(keyboardName!)) {
+            cell.hasPurchased = true
+        } else {
+            cell.hasPurchased = false
+            cell.enableKeyboardButton.setTitle("Purchase", forState: .Normal)
+        }
+        */
         //cell.keyboardContainer.addSubview(nib.)
         var nibs = NSBundle.mainBundle().loadNibNamed(keyboardName, owner: self, options: nil)
         cell.keyboardContainer.addSubview(nibs[0] as! UIView)
@@ -113,12 +121,16 @@ class SelectTableViewController: UITableViewController, IAPHelperDelegate {
         var name: String = ""
         
         for var i = 0; i < keyboardData.count; i++ {
-            if productString == keyboardData[i]["Name"] {
+            if productString == keyboardData[i]["ProductName"] {
                 name = productString
+                var cell = self.tableView.cellForRowAtIndexPath(NSIndexPath(forRow: i, inSection: 0)) as! CustomCell
+                cell.hasPurchased = true
+                cell.enable()
             }
         }
         
         KeychainHelper.setKeyboardAvailable(name)
+        
         /*
         var notice = UIAlertController(title: "Thank You!", message: "Purchase Successful!", preferredStyle: UIAlertControllerStyle.Alert)
         var action = UIAlertAction(title: "OK", style: .Default) { action -> Void in }

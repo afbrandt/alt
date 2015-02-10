@@ -71,7 +71,12 @@ class IAPHelper: NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserv
                         queue.finishTransaction(tx)
                         //hasFinished = true
                         break;
+                    case .Deferred:
+                        break;
+                    case .Purchasing:
+                        break;
                     default:
+                        queue.finishTransaction(tx)
                         break;
                     }
                 }

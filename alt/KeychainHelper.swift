@@ -36,10 +36,14 @@ class KeychainHelper: NSObject {
         for var i = 0; i < keyboardData.count; i++ {
             var keyboardString = keyboardData[i]["Name"] as String!
             if let keychainValue = self.keychainValueForKey(keyboardString) as String? {
+                #if DEBUG
                 NSLog("key: %@ value: %@", keyboardString, keychainValue)
-                result.insert("keyboardString")
+                #endif
+                result.insert(keyboardString)
             } else if keyboardString == "AZERTY" {
+                #if DEBUG
                 NSLog("first time setup, enable free keyboard")
+                #endif
                 self.setKeyboardAvailable(keyboardString)
                 result.insert(keyboardString)
             } else {
@@ -65,16 +69,22 @@ class KeychainHelper: NSObject {
                 NSLog("keychain added without error")
                 break;
             case errSecParam:
+                #if DEBUG
                 NSLog("a parameter is missing from query")
+                #endif
                 break;
             case errSecAuthFailed, errSecInteractionNotAllowed:
+                #if DEBUG
                 NSLog("some security error happened")
+                #endif
                 break;
             case errSecDuplicateItem:
                 NSLog("the item already exists")
                 break;
             default:
+                #if DEBUG
                 NSLog("something unexpected happened!")
+                #endif
                 break;
             }
         }
@@ -106,10 +116,14 @@ class KeychainHelper: NSObject {
             NSLog("key %@ not found", key)
             break;
         case errSecAuthFailed, errSecInteractionNotAllowed:
+            #if DEBUG
             NSLog("some security error happened")
+            #endif
             break;
         default:
+            #if DEBUG
             NSLog("something unexpected happened!")
+            #endif
             break;
         }
         
